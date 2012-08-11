@@ -38,11 +38,10 @@ test_parse_status = () ->
 test_parse_empty_content = () ->
   test_content = ''
 
-  assert.throws(() ->
+  assert.throws () ->
     parser.parse test_content, (err, data) ->
       throw new Error err if err
     Error
-  )
 
 # Test all the cases combined
 test_all_cases = () ->

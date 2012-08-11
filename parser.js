@@ -12,9 +12,9 @@
     tags_regex = /(#[a-zA-Z0-9_-]+)/g;
     mentions_regex = /(@[a-zA-Z0-9_-]+)/g;
     status_regex = /(status:[a-zA-Z0-9_-]+)/g;
-    tags = content.match(tags_regex) || [];
-    mentions = content.match(mentions_regex) || [];
-    statuses = content.match(status_regex) || [];
+    tags = content.match(tags_regex || []);
+    mentions = content.match(mentions_regex || []);
+    statuses = content.match(status_regex || []);
     data = {
       tags: tags,
       mentions: mentions,

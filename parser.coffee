@@ -2,7 +2,7 @@
 parse = (content, callback) ->
   if not content
     error_message = 'nothing to parse'
-    callback(error_message, null)
+    callback error_message, null
 
     return error_message
 
@@ -10,16 +10,16 @@ parse = (content, callback) ->
   mentions_regex = /(@[a-zA-Z0-9_-]+)/g
   status_regex = /(status:[a-zA-Z0-9_-]+)/g
 
-  tags = content.match(tags_regex) or []
-  mentions = content.match(mentions_regex) or []
-  statuses = content.match(status_regex) or []
+  tags = content.match tags_regex or []
+  mentions = content.match mentions_regex or []
+  statuses = content.match status_regex or []
 
   data =
     tags: tags
     mentions: mentions
     statuses: statuses
 
-  callback(null, data) if callback
+  callback null, data if callback
 
   return data
 
