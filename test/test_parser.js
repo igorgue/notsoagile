@@ -15,7 +15,7 @@
         throw new Error("Error parsing tags: " + err);
       }
       assert.equal(data.tags.length, 3);
-      _ref = ['problem', 'frontend', 'design'];
+      _ref = ['#problem', '#frontend', '#design'];
       _results = [];
       for (index = _i = 0, _len = _ref.length; _i < _len; index = ++_i) {
         tag = _ref[index];
@@ -33,7 +33,7 @@
         throw new Error("Error parsing mentions: " + err);
       }
       assert.equal(data.mentions.length, 1);
-      return assert.equal(data.mentions[0], 'igorgue');
+      return assert.equal(data.mentions[0], '@igorgue');
     });
   };
 
@@ -45,7 +45,7 @@
         throw new Error("Error parsing mentions: " + err);
       }
       assert.equal(data.statuses.lenght, 1);
-      return assert.equal(data.statuses[0], 'started');
+      return assert.equal(data.statuses[0], 'status:started');
     });
   };
 
@@ -64,7 +64,7 @@
 
   test_all_cases = function() {
     var test_content;
-    test_content = "Ok this is gonna be a #big-task @igorgue has to do a lot of this to \nmake this release happen this weekend. He might need help from @_why\n#release status:not-started";
+    test_content = "Ok this is gonna be a #big-task @igorgue has to do\na lot of this to make this release happen this weekend. He might need\nhelp from @_why. #release status:open";
     return parser.parse(test_content, function(err, data) {
       var index, mention, status, tag, _i, _j, _k, _len, _len1, _len2, _ref, _ref1, _ref2, _results;
       if (err) {
@@ -73,17 +73,17 @@
       assert.equal(data.tags.length, 2);
       assert.equal(data.mentions.length, 2);
       assert.equal(data.statuses.length, 1);
-      _ref = ['big-task', 'release'];
+      _ref = ['#big-task', '#release'];
       for (index = _i = 0, _len = _ref.length; _i < _len; index = ++_i) {
         tag = _ref[index];
         assert.equal(data.tags[index], tag);
       }
-      _ref1 = ['igorgue', '_why'];
+      _ref1 = ['@igorgue', '@_why'];
       for (index = _j = 0, _len1 = _ref1.length; _j < _len1; index = ++_j) {
         mention = _ref1[index];
         assert.equal(data.mentions[index], mention);
       }
-      _ref2 = ['not-started'];
+      _ref2 = ['status:open'];
       _results = [];
       for (index = _k = 0, _len2 = _ref2.length; _k < _len2; index = ++_k) {
         status = _ref2[index];

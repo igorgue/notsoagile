@@ -9,7 +9,7 @@ test_parse_tags = () ->
 
     assert.equal data.tags.length, 3
 
-    for tag, index in ['problem', 'frontend', 'design']
+    for tag, index in ['#problem', '#frontend', '#design']
       assert.equal data.tags[index], tag
 
   return
@@ -21,7 +21,7 @@ test_parse_metions = () ->
     throw new Error "Error parsing mentions: #{err}" if err
 
     assert.equal data.mentions.length, 1
-    assert.equal data.mentions[0], 'igorgue'
+    assert.equal data.mentions[0], '@igorgue'
 
   return
 
@@ -32,7 +32,7 @@ test_parse_status = () ->
     throw new Error "Error parsing mentions: #{err}" if err
 
     assert.equal data.statuses.lenght, 1
-    assert.equal data.statuses[0], 'started'
+    assert.equal data.statuses[0], 'status:started'
 
 # Test empty content is an error
 test_parse_empty_content = () ->
@@ -46,10 +46,9 @@ test_parse_empty_content = () ->
 
 # Test all the cases combined
 test_all_cases = () ->
-  test_content = """
-  Ok this is gonna be a #big-task @igorgue has to do a lot of this to 
-  make this release happen this weekend. He might need help from @_why
-  #release status:not-started
+  test_content = """Ok this is gonna be a #big-task @igorgue has to do
+  a lot of this to make this release happen this weekend. He might need
+  help from @_why. #release status:open
   """
   parser.parse test_content, (err, data) ->
     throw new Error "Error parsing he combination: #{err}" if err
@@ -58,13 +57,13 @@ test_all_cases = () ->
     assert.equal data.mentions.length, 2
     assert.equal data.statuses.length, 1
 
-    for tag, index in ['big-task', 'release']
+    for tag, index in ['#big-task', '#release']
       assert.equal data.tags[index], tag
 
-    for mention, index in ['igorgue', '_why']
+    for mention, index in ['@igorgue', '@_why']
       assert.equal data.mentions[index], mention
 
-    for status, index in ['not-started']
+    for status, index in ['status:open']
       assert.equal data.statuses[index], status
 
 module.exports =

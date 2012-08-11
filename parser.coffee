@@ -1,3 +1,4 @@
+# Gets all the values from
 parse = (content, callback) ->
   if not content
     error_message = 'nothing to parse'
@@ -12,18 +13,6 @@ parse = (content, callback) ->
   tags = content.match(tags_regex) or []
   mentions = content.match(mentions_regex) or []
   statuses = content.match(status_regex) or []
-
-  # Remove '#' from tag
-  tags = for tag in tags
-    tag.slice(1, tag.length)
-
-  # Remove '@' from mentions 
-  mentions = for mention in mentions
-    mention.slice(1, mention.length)
-
-  # Remove 'status:' from statuses
-  statuses = for status in statuses
-    status.slice(7, status.length)
 
   data =
     tags: tags

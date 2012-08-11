@@ -3,7 +3,7 @@
   var parse;
 
   parse = function(content, callback) {
-    var data, error_message, mention, mentions, mentions_regex, status, status_regex, statuses, tag, tags, tags_regex;
+    var data, error_message, mentions, mentions_regex, status_regex, statuses, tags, tags_regex;
     if (!content) {
       error_message = 'nothing to parse';
       callback(error_message, null);
@@ -15,33 +15,6 @@
     tags = content.match(tags_regex) || [];
     mentions = content.match(mentions_regex) || [];
     statuses = content.match(status_regex) || [];
-    tags = (function() {
-      var _i, _len, _results;
-      _results = [];
-      for (_i = 0, _len = tags.length; _i < _len; _i++) {
-        tag = tags[_i];
-        _results.push(tag.slice(1, tag.length));
-      }
-      return _results;
-    })();
-    mentions = (function() {
-      var _i, _len, _results;
-      _results = [];
-      for (_i = 0, _len = mentions.length; _i < _len; _i++) {
-        mention = mentions[_i];
-        _results.push(mention.slice(1, mention.length));
-      }
-      return _results;
-    })();
-    statuses = (function() {
-      var _i, _len, _results;
-      _results = [];
-      for (_i = 0, _len = statuses.length; _i < _len; _i++) {
-        status = statuses[_i];
-        _results.push(status.slice(7, status.length));
-      }
-      return _results;
-    })();
     data = {
       tags: tags,
       mentions: mentions,
