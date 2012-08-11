@@ -1,0 +1,14 @@
+{
+  "name": "notsoagile",
+  "version": "0.0.0",
+  "description": "A \"get the fuck out of the way\" issue tracker",
+  "main": "app.js",
+  "scripts": {
+    "test": "node test/notsoagile.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/igorgue/notsoagile.git"
+  },
+  "author": "Igor Guerrero"
+}
