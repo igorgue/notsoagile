@@ -20,7 +20,7 @@
       for (_i = 0, _len = _ref.length; _i < _len; _i++) {
         tag = _ref[_i];
         new_link = "<a title=\"" + tag + "\" href=\"/" + tag + "\">" + tag + "</a>";
-        content = content.replace(tag, new_link, 'g');
+        content = content.replace(tag, new_link);
       }
     }
     if (parsed_data.mentions) {
@@ -28,7 +28,7 @@
       for (_j = 0, _len1 = _ref1.length; _j < _len1; _j++) {
         mention = _ref1[_j];
         new_link = "<a title=\"" + mention + "\" href=\"/" + mention + "\">" + mention + "</a>";
-        content = content.replace(tag, new_link, 'g');
+        content = content.replace(mention, new_link);
       }
     }
     if (parsed_data.statuses) {
@@ -36,7 +36,7 @@
       for (_k = 0, _len2 = _ref2.length; _k < _len2; _k++) {
         status = _ref2[_k];
         new_link = "<a title=\"" + status + "\" href=\"/" + status + "\">" + status + "</a>";
-        content = content.replace(tag, new_link, 'g');
+        content = content.replace(status, new_link);
       }
     }
     callback(null, content);

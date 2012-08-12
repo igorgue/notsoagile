@@ -17,19 +17,19 @@ format = (content, parsed_data, callback) ->
   if parsed_data.tags
     for tag in parsed_data.tags
       new_link = """<a title="#{tag}" href="/#{tag}">#{tag}</a>"""
-      content = content.replace tag, new_link, 'g'
+      content = content.replace tag, new_link
 
   # Mentions
   if parsed_data.mentions
     for mention in parsed_data.mentions
       new_link = """<a title="#{mention}" href="/#{mention}">#{mention}</a>"""
-      content = content.replace tag, new_link, 'g'
+      content = content.replace mention, new_link
 
   # Statuses
   if parsed_data.statuses
     for status in parsed_data.statuses
       new_link = """<a title="#{status}" href="/#{status}">#{status}</a>"""
-      content = content.replace tag, new_link, 'g'
+      content = content.replace status, new_link
 
   callback null, content
 

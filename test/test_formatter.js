@@ -31,7 +31,7 @@
   };
 
   module.exports = {
-    tests: [test_formats_a_tag, test_formats_combined_stuff]
+    tests: [test_formats_combined_stuff]
   };
 
 }).call(this);
