@@ -14,20 +14,26 @@ format = (content, parsed_data, callback) ->
     return error_message
 
   # Tags
-  for tag in parsed_data.tags
-    new_link = """<a title="#{tag}" href="/#{tag}">#{tag}</a>"""
-    content.replace tag, new_link, 'g'
+  if parsed_data.tags
+    for tag in parsed_data.tags
+      new_link = """<a title="#{tag}" href="/#{tag}">#{tag}</a>"""
+      content = content.replace tag, new_link, 'g'
 
   # Mentions
-  for mention in parsed_data.mentions
-    new_link = """<a title="#{mention}" href="/#{mention}">#{mention}</a>"""
-    content.replace tag, new_link, 'g'
+  if parsed_data.mentions
+    for mention in parsed_data.mentions
+      new_link = """<a title="#{mention}" href="/#{mention}">#{mention}</a>"""
+      content = content.replace tag, new_link, 'g'
 
-  # Mentions
-  for status in parsed_data.statuses
-    new_link = """<a title="#{status}" href="/#{status}">#{status}</a>"""
-    content.replace tag, new_link, 'g'
+  # Statuses
+  if parsed_data.statuses
+    for status in parsed_data.statuses
+      new_link = """<a title="#{status}" href="/#{status}">#{status}</a>"""
+      content = content.replace tag, new_link, 'g'
 
-  callbackx null, content
+  callback null, content
 
   return content
+
+module.exports =
+  format: format

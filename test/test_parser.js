@@ -44,7 +44,7 @@
       if (err) {
         throw new Error("Error parsing mentions: " + err);
       }
-      assert.equal(data.statuses.lenght, 1);
+      assert.equal(data.statuses.length, 1);
       return assert.equal(data.statuses[0], 'status:started');
     });
   };

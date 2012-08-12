@@ -1,5 +1,5 @@
-assert = require('assert')
-parser = require('../parser')
+assert = require 'assert'
+parser = require '../parser'
 
 # Tests that we are parsing a tag
 test_parse_tags = () ->
@@ -31,7 +31,7 @@ test_parse_status = () ->
   parser.parse test_content, (err, data) ->
     throw new Error "Error parsing mentions: #{err}" if err
 
-    assert.equal data.statuses.lenght, 1
+    assert.equal data.statuses.length, 1
     assert.equal data.statuses[0], 'status:started'
 
 # Test empty content is an error
