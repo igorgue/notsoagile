@@ -10,5 +10,8 @@
     "type": "git",
     "url": "git://github.com/igorgue/notsoagile.git"
   },
-  "author": "Igor Guerrero"
+  "author": "Igor Guerrero",
+  "dependencies": {
+    "express": "~3.0.0rc2"
+  }
 }
