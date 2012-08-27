@@ -23,5 +23,10 @@ parse = (content, callback) ->
 
   return data
 
-module.exports =
-  parse: parse
+if window?
+  window.notsoagile = {} unless window.notsoagile?
+  window.notsoagile.parse = parse
+
+if module?
+  module.exports =
+    parse: parse

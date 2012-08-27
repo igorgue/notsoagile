@@ -26,8 +26,17 @@
     return data;
   };
 
-  module.exports = {
-    parse: parse
-  };
+  if (typeof window !== "undefined" && window !== null) {
+    if (window.notsoagile == null) {
+      window.notsoagile = {};
+    }
+    window.notsoagile.parse = parse;
+  }
+
+  if (typeof module !== "undefined" && module !== null) {
+    module.exports = {
+      parse: parse
+    };
+  }
 
 }).call(this);

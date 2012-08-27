@@ -43,8 +43,17 @@
     return content;
   };
 
-  module.exports = {
-    format: format
-  };
+  if (typeof window !== "undefined" && window !== null) {
+    if (window.notsoagile == null) {
+      window.notsoagile = {};
+    }
+    window.notsoagile.format = format;
+  }
+
+  if (typeof module !== "undefined" && module !== null) {
+    module.exports = {
+      format: format
+    };
+  }
 
 }).call(this);

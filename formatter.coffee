@@ -35,5 +35,10 @@ format = (content, parsed_data, callback) ->
 
   return content
 
-module.exports =
-  format: format
+if window?
+  window.notsoagile = {} unless window.notsoagile?
+  window.notsoagile.format = format
+
+if module?
+  module.exports =
+    format: format

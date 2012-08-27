@@ -10,8 +10,11 @@
 
   app = express();
 
-  app.get('/', function(req, res) {
-    return res.redirect('/');
+  app.get('/tasks', function(req, res) {
+    res.set({
+      'Content-Type': 'application/json'
+    });
+    return res.send(['Please fix the site @igor #broken-site status:new', 'This is a done task @igor status:done']);
   });
 
   app.listen(port);
