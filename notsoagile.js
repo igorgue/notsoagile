@@ -10,6 +10,8 @@
 
   app = express();
 
+  app.use("/public", express["static"]("" + __dirname + "/public"));
+
   app.get('/tasks', function(req, res) {
     res.set({
       'Content-Type': 'application/json'

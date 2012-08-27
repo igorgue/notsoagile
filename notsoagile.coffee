@@ -4,6 +4,8 @@ host = '0.0.0.0'
 
 app = express()
 
+app.use "/public", express.static "#{__dirname}/public"
+
 app.get '/tasks', (req, res) ->
   res.set
     'Content-Type': 'application/json'
